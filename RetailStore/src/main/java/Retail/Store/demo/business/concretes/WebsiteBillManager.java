@@ -95,11 +95,11 @@ public class WebsiteBillManager implements WebsiteBillService {
             int productIndex = productTypePhone.getIndex();
             productPhonePrice = productTypePhone.getProductPrice()*quantity.get(productIndex);
             totalPrice = totalPrice-productPhonePrice; //Decrease by phone price in order to calculate discount percentage without it.
-            totalPrice = totalPrice- totalPrice*(discountPercentage);
+            totalPrice = totalPrice- totalPrice*(discountPercentage/100);
             totalPrice = totalPrice+productPhonePrice; //Add the phone price again to the calculated total price.
         }
         else{
-            totalPrice = totalPrice- totalPrice*(discountPercentage);
+            totalPrice = totalPrice- totalPrice*(discountPercentage/100);
         }
         totalPrice = totalPrice - discountAmountByPrice; //Decrease the total price by the general discount
         return totalPrice;
